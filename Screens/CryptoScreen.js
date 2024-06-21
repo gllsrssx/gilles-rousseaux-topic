@@ -9,22 +9,24 @@ export default function App() {
     const [input, setInput] = useState('');
     const [algorithm, setAlgorithm] = useState('SHA-256');
 
+    // Functie om de hash te genereren op basis van de invoer en het geselecteerde algoritme
     const generateHash = async () => {
         const digest = await Crypto.digestStringAsync(`SHA-${algorithm}`, input);
         setHash(digest);
     };
 
+    // Functie om willekeurige bytes te genereren
     const generateRandomBytes = async () => {
         const bytes = await Crypto.getRandomBytesAsync(16);
         setRandomBytes(bytes);
     };
 
+    // Functie om een UUID te genereren
     const generateUuid = () => {
         const uuid = Crypto.randomUUID();
         setUuid(uuid);
     };
-
-
+    
     return (
         <View style={styles.container}>
             <View style={styles.inputContainer}>
